@@ -12,7 +12,7 @@ DEVICE=u8150
 # overwritten because the device is not connected
 $(adb shell 'echo hello')
 ret=$?
-if [ !-z $ret ]; then
+if [ $ret -ne 0 ]; then
     echo adb shell \'echo hello\' failed. Giving up.
     exit $ret
 fi
