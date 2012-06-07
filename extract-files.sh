@@ -32,4 +32,4 @@ adb pull /system/$FILE $BASE/$FILE
 fi
 done
 fi
-./setup-makefiles.sh
+# ./setup-makefiles.sh
