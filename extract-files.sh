@@ -8,6 +8,14 @@
 VENDOR=huawei
 DEVICE=u8150
 
+# This block is required to ensure that the proprietary directory does not get 
+# overwritten because the device is not connected
+ret=$(adb shell 'echo hello')
+if [ !-z $ret ]; then
+    echo adb shell \'echo hello\' failed. Giving up
+    exit $ret
+fi
+
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $BASE/*
 
@@ -32,4 +40,4 @@ adb pull /system/$FILE $BASE/$FILE
 fi
 done
 fi
-# ./setup-makefiles.sh
+./setup-makefiles.sh
