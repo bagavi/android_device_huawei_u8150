@@ -10,9 +10,10 @@ DEVICE=u8150
 
 # This block is required to ensure that the proprietary directory does not get 
 # overwritten because the device is not connected
-ret=$(adb shell 'echo hello')
+$(adb shell 'echo hello')
+ret=$?
 if [ !-z $ret ]; then
-    echo adb shell \'echo hello\' failed. Giving up
+    echo adb shell \'echo hello\' failed. Giving up.
     exit $ret
 fi
 
