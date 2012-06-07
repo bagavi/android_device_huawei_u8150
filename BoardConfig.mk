@@ -32,8 +32,8 @@ TARGET_SPECIFIC_HEADER_PATH := device/huawei/u8150/include
 
 # ARMv6-compatible processor rev 5 (v6l)
 TARGET_BOARD_PLATFORM := msm7k
-TARGET_ARCH_VARIANT := armv6
-TARGET_CPU_ABI := armeabi-v6
+TARGET_ARCH_VARIANT := armv6j
+TARGET_CPU_ABI := armeabi-v6j
 TARGET_CPU_ABI2 := armeabi
 
 TARGET_NO_BOOTLOADER := true
