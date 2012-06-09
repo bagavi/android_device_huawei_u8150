@@ -12,6 +12,6 @@ subdir_makefiles := \
     $(LOCAL_PATH)/librpc/Android.mk \
     $(LOCAL_PATH)/libstagefrighthw/Android.mk
 
-    include $(subdir_makefiles)
+    #include $(subdir_makefiles)
 
 endif
