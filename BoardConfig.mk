@@ -28,7 +28,8 @@ USE_CAMERA_STUB := true
 # inherit from the proprietary version
 -include vendor/huawei/u8150/BoardConfigVendor.mk
 
-TARGET_SPECIFIC_HEADER_PATH := device/huawei/u8150/include
+# Headers are no more required now. We will remove this line soon
+#TARGET_SPECIFIC_HEADER_PATH := device/huawei/u8150/include
 
 # ARMv6-compatible processor rev 5 (v6l)
 TARGET_BOARD_PLATFORM := msm7k
@@ -107,10 +108,12 @@ BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/u8150/recovery/recovery_
 BOARD_USE_CUSTOM_RECOVERY_FONT := "<font_7x16.h>"
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel
-TARGET_KERNEL_CONFIG := cyanogen_u8150_defconfig
-BOARD_KERNEL_BASE := 0x00200000
-#BOARD_KERNEL_CMDLINE := mem=211M console=ttyMSM2,115200n8 androidboot.hardware=u8150
+# TARGET_KERNEL_SOURCE := kernel
+# TARGET_KERNEL_CONFIG := cyanogen_u8150_defconfig
+# BOARD_KERNEL_BASE := 0x00200000
+
+BOARD_KERNEL_CMDLINE := mem=211M console=ttyMSM2,115200n8 androidboot.hardware=u8150
+
 # BOARD_KERNEL_PAGESIZE := 4096
 # TARGET_PREBUILT_KERNEL	:= device/huawei/u8150/kernel
 # # cat /proc/mtd
