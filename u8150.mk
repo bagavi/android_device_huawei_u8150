@@ -22,3 +22,12 @@ $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 $(call inherit-product-if-exists, vendor/huawei/u8150/u8150-vendor.mk)
 $(call inherit-product-if-exists, vendor/huawei/u8150/u8150-vendor-blobs.mk)
+
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+    LOCAL_KERNEL := device/huawei/u8150/kernel
+else
+    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+PRODUCT_COPY_FILES += \
+	$(LOCAL_KERNEL):kernel
