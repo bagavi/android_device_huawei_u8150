@@ -132,5 +132,6 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x0af00000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0a6a0000
 BOARD_FLASH_BLOCK_SIZE := 262144 
 
-# Making B2G take the init.rc file from rootdir of this repo
-TARGET_PROVIDES_B2G_INIT_RC := true
+# Making B2G take the init.rc and ueventd.rc files from rootdir of this repo
+TARGET_PROVIDES_INIT_RC := true
+TARGET_PROVIDES_UEVENTD_RC := true
