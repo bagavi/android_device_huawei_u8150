@@ -25,7 +25,7 @@ ro.telephony.call_ring.delay=3000
 
 # USB
 persist.sys.usb.config=mass_storage
-sys.usb.config=mass_storage
+sys.usb.config=accessory,adb
 persist.service.adb.enable=1
 
 # System
