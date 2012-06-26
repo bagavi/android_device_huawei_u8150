@@ -28,7 +28,8 @@ USE_CAMERA_STUB := true
 # inherit from the proprietary version
 -include vendor/huawei/u8150/BoardConfigVendor.mk
 
-TARGET_SPECIFIC_HEADER_PATH := device/huawei/u8150/include
+# Headers are no more required now. We will remove this line soon
+#TARGET_SPECIFIC_HEADER_PATH := device/huawei/u8150/include
 
 # ARMv6-compatible processor rev 5 (v6l)
 TARGET_BOARD_PLATFORM := msm7k
@@ -107,12 +108,19 @@ BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/huawei/u8150/recovery/recovery_
 BOARD_USE_CUSTOM_RECOVERY_FONT := "<font_7x16.h>"
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/
-TARGET_KERNEL_CONFIG := cyanogen_u8150_defconfig
-BOARD_KERNEL_BASE := 0x00200000
-BOARD_KERNEL_CMDLINE := mem=211M console=ttyMSM2,115200n8 androidboot.hardware=u8150
-BOARD_KERNEL_PAGESIZE := 4096
+# TARGET_KERNEL_SOURCE := kernel
+# TARGET_KERNEL_CONFIG := cyanogen_u8150_defconfig
+BOARD_KERNEL_BASE := 0x200000
+# BOARD_KERNEL_KERNELADDR  := 0x208000
+# BOARD_KERNEL_RAMDISKADDR := 0x1200000
+# BOARD_KERNEL_SECONDADDR  := 0x1100000
+# BOARD_KERNEL_TAGSADDR    := 0x200100
 
+BOARD_KERNEL_CMDLINE := mem=211M console=ttyMSM2,115200n8 androidboot.hardware=u8150
+# BOARD_KERNEL_CMDLINE := mem=211M console=tty0 androidboot.hardware=u8150
+
+BOARD_KERNEL_PAGESIZE := 4096
+# TARGET_PREBUILT_KERNEL	:= device/huawei/u8150/kernel
 # # cat /proc/mtd
 # dev:    size   erasesize  name
 # mtd0: 00500000 00020000 "boot"
@@ -123,8 +131,15 @@ BOARD_KERNEL_PAGESIZE := 4096
 # mtd5: 05d00000 00020000 "cache"
 # mtd6: 0a6a0000 00020000 "userdata"
 # mtd7: 01400000 00020000 "cust"
-BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00500000
+BOARD_BOOTIMAGE_PARTITION_SIZE :=     0x00500000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00600000
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x0af00000
+BOARD_SYSTEMIMAGE_PARTITION_SIZE :=   0x0af00000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0a6a0000
-BOARD_FLASH_BLOCK_SIZE := 262144 
+# BOARD_FLASH_BLOCK_SIZE := 262144 
+BOARD_FLASH_BLOCK_SIZE := 4096
+
+# Making B2G take the init.rc and ueventd.rc files from rootdir of this repo
+TARGET_PROVIDES_INIT_RC := true
+TARGET_PROVIDES_UEVENTD_RC := true
+TARGET_PROVIDES_INIT_TARGET_RC := true
+
