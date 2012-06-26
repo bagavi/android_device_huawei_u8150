@@ -371,6 +371,7 @@ on property:sys.usb.config=accessory,adb
 # Used to set USB configuration at boot and to switch the configuration
 # when changing the default configuration
 on property:persist.sys.usb.config=*
+    start adbd
     setprop sys.usb.config $persist.sys.usb.config
 
 ## Daemon processes to be run by init.
