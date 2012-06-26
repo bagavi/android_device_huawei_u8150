@@ -143,3 +143,8 @@ TARGET_PROVIDES_INIT_RC := true
 TARGET_PROVIDES_UEVENTD_RC := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
 
+
+# Making B2G take the init.rc and ueventd.rc files from rootdir of this repo
+TARGET_PROVIDES_INIT_RC := true
+TARGET_PROVIDES_UEVENTD_RC := true
+
