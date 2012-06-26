@@ -12,7 +12,7 @@ on init
 
 sysclktz 0
 
-loglevel 3
+loglevel 8
 
 # setup the global environment
     export PATH /sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin
@@ -203,7 +203,7 @@ on post-fs-data
     chmod 0660 /sys/class/android_usb/android0/f_rndis/ethaddr
 
 # Include extra init file
-    import /system/etc/init.local.rc
+#    import /system/etc/init.local.rc
 
 on boot
 # basic network init
