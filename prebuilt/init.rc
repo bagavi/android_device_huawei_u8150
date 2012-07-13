@@ -39,8 +39,8 @@ loglevel 8
     mkdir /acct/uid
 
     mkdir /system
-    mkdir /data 0771 system system
-    mkdir /cache 0771 system cache
+    mkdir /data 0777 system system
+    mkdir /cache 0777 system cache
     mkdir /config 0500 root root
 
     # Directory for putting things only root should see.
@@ -63,7 +63,7 @@ loglevel 8
 
     write /proc/sys/kernel/panic_on_oops 1
     write /proc/sys/kernel/hung_task_timeout_secs 0
-    write /proc/cpu/alignment 4
+    write /proc/cpu/alignment 2
     write /proc/sys/kernel/sched_latency_ns 10000000
     write /proc/sys/kernel/sched_wakeup_granularity_ns 2000000
     write /proc/sys/kernel/sched_compat_yield 1
@@ -110,7 +110,7 @@ on post-fs
 
     # We chown/chmod /cache again so because mount is run as root + defaults
     chown system cache /cache
-    chmod 0771 /cache
+    chmod 0777 /cache
 
     # This may have been created by the recovery system with odd permissions
     chown system cache /cache/recovery
@@ -132,7 +132,7 @@ on post-fs
 on post-fs-data
     # We chown/chmod /data again so because mount is run as root + defaults
     chown system system /data
-    chmod 0771 /data
+    chmod 0777 /data
 
     # Create dump dir and collect dumps.
     # Do this before we mount cache so eventually we can use cache for
@@ -172,16 +172,16 @@ on post-fs-data
     # create dalvik-cache and double-check the perms, so as to enforce our permissions
     mkdir /data/dalvik-cache 0771 system system
     chown system system /data/dalvik-cache
-    chmod 0771 /data/dalvik-cache
+    chmod 0777 /data/dalvik-cache
 
     mkdir /cache/dalvik-cache 0771 system system
     chown system system /cache/dalvik-cache
-    chmod 0771 /cache/dalvik-cache
+    chmod 0777 /cache/dalvik-cache
 
     # create resource-cache and double-check the perms
     mkdir /data/resource-cache 0771 system system
     chown system system /data/resource-cache
-    chmod 0771 /data/resource-cache
+    chmod 0777 /data/resource-cache
 
     # create the lost+found directories, so as to enforce our permissions
     mkdir /data/lost+found 0770 root root
@@ -295,9 +295,9 @@ on boot
     write /sys/kernel/mm/ksm/pages_to_scan 256
 
 # Set this property so surfaceflinger is not started by system_init
-    setprop system_init.startsurfaceflinger 0
+#   setprop system_init.startsurfaceflinger 0
 
-# Run sysinit
+#Run sysinit
 #    exec /system/bin/sysinit
 
     class_start core
@@ -417,7 +417,7 @@ service servicemanager /system/bin/servicemanager
     critical
     onrestart restart zygote
     onrestart restart media
-    onrestart restart surfaceflinger
+#    onrestart restart surfaceflinger
     onrestart restart drm
 
 service vold /system/bin/vold
@@ -440,11 +440,12 @@ service ril-daemon /system/bin/rild
     user root
     group radio cache inet misc audio sdcard_rw qcom_oncrpc diag
 
-service surfaceflinger /system/bin/surfaceflinger
-    class main
-    user system
-    group graphics
-    onrestart restart zygote
+#Removed by vivek
+#service surfaceflinger /system/bin/surfaceflinger
+#    class main
+#    user system
+#    group graphics
+#    onrestart restart zygote
 
 service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-system-server
     class main

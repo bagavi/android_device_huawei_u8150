@@ -24,5 +24,19 @@ LOCAL_PATH := $(call my-dir)
 # overridden further down
 include $(CLEAR_VARS)
 
+#----------------------------------------------------------------------
+# Compile Linux Kernel
+#----------------------------------------------------------------------
+ifeq ($(KERNEL_DEFCONFIG),)
+    KERNEL_DEFCONFIG := cyanogen_u8150_defconfig 
+endif
+
+include kernel/AndroidKernel.mk
+
+file := $(INSTALLED_KERNEL_TARGET)
+ALL_PREBUILT += $(file)
+$(file) : $(TARGET_PREBUILT_KERNEL) | $(ACP)
+	$(transform-prebuilt-to-target)
+
 # include the non-open-source counterpart to this file
 -include vendor/huawei/u8150/AndroidBoardVendor.mk

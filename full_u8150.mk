@@ -20,7 +20,10 @@ $(call inherit-product, $(LOCAL_PATH)/u8150.mk)
 # $(call inherit-product, vendor/cm/config/gsm.mk)
 
 # Inherit full_base.mk. That is what galaxy s2 does.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+#$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+
+# Inherit adreno_200.mk
+#include device/huawei/u8150/adreno_200.mk
 
 # Setup device configuration
 PRODUCT_NAME := full_u8150

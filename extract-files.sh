@@ -10,12 +10,12 @@ DEVICE=u8150
 
 # This block is required to ensure that the proprietary directory does not get 
 # overwritten because the device is not connected
-$(adb shell 'echo hello')
-ret=$?
-if [ $ret -ne 0 ]; then
-    echo adb shell \'echo hello\' failed. Giving up.
-    exit $ret
-fi
+#$(adb shell 'echo hello')
+#ret=$?
+#if [ $ret -ne 0 ]; then
+#    echo adb shell \'echo hello\' failed. Giving up.
+#    exit $ret
+#fi
 
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $BASE/*

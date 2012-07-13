@@ -29,7 +29,7 @@ USE_CAMERA_STUB := true
 -include vendor/huawei/u8150/BoardConfigVendor.mk
 
 # Headers are no more required now. We will remove this line soon
-#TARGET_SPECIFIC_HEADER_PATH := device/huawei/u8150/include
+TARGET_SPECIFIC_HEADER_PATH := device/huawei/u8150/include
 
 # ARMv6-compatible processor rev 5 (v6l)
 TARGET_BOARD_PLATFORM := msm7k
@@ -48,6 +48,8 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
 # QCOM
+#TARGET_USES_C2D_COMPOSITION := true
+BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBRPC := true
 BOARD_USES_QCOM_LIBS := true
 BOARD_USE_ADRENO_130_GPU := true
@@ -141,5 +143,5 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 # Making B2G take the init.rc and ueventd.rc files from rootdir of this repo
 TARGET_PROVIDES_INIT_RC := true
 TARGET_PROVIDES_UEVENTD_RC := true
+TARGET_PROVIDES_UEVENTD_TARGET_RC := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
-

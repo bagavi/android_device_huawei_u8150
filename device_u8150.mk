@@ -27,6 +27,8 @@ PRODUCT_LOCALES += mdpi
 # Graphics 
 PRODUCT_PACKAGES += \
     gralloc.u8150 \
+	gralloc.msm7k \
+	copybit.msm7k \
     copybit.u8150
 
 # Audio
@@ -49,13 +51,14 @@ PRODUCT_PACKAGES += \
 
 # Other
 PRODUCT_PACKAGES += \
+	lights.msm7k \
     lights.u8150 \
     gps.u8150 \
     camera.u8150 \
     Apollo
 
 # Hardware permissions
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/base/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
@@ -68,6 +71,9 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
+# Copy the gdbserver
+PRODCUT_COPY_FILES += \
+	device/huawei/u8150/prebuilt/gdbserver:data/local/gdbserver 
 # Vold and USB
 PRODUCT_COPY_FILES += \
     device/huawei/u8150/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
@@ -85,6 +91,7 @@ PRODUCT_COPY_FILES += \
 
 # Wi-Fi releated
 PRODUCT_COPY_FILES += \
+	device/huawei/u8150/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml \
     device/huawei/u8150/prebuilt/lib/modules/dhd.ko:system/lib/modules/dhd.ko \
     device/huawei/u8150/prebuilt/etc/fw_4319.bin:system/etc/fw_4319.bin \
     device/huawei/u8150/prebuilt/etc/fw_4319_apsta.bin:system/etc/fw_4319_apsta.bin \
@@ -125,4 +132,22 @@ PRODUCT_COPY_FILES += \
     device/huawei/u8150/prebuilt/usr/keylayout/melfas-touchscreen.Ver23.kl:system/usr/keylayout/melfas-touchscreen.Ver23.kl \
     device/huawei/u8150/prebuilt/usr/keylayout/melfas-touchscreen_ver23.kl:system/usr/keylayout/melfas-touchscreen_ver23.kl \
     device/huawei/u8150/prebuilt/usr/keylayout/synaptics-rmi-touchscreen.kl:system/usr/keylayout/synaptics-rmi-touchscreen.kl
-
+    
+# other stuff in modules folder
+#PRODUCT_COPY_FILES += \
+#	device/huawei/u8150/prebuilt/lib/egl/libGLES_android.so:system/lib/egl/libGLES_android.so
+PRODUCT_COPY_FILES += \
+	device/huawei/u8150/prebuilt/lib/modules/evbug.ko:system/lib/modules/evbug.ko \
+	device/huawei/u8150/prebuilt/lib/modules/mtd_oobtest.ko:system/lib/modules/mtd_oobtest.ko \
+	device/huawei/u8150/prebuilt/lib/modules/mtd_readtest.ko:system/lib/modules/mtd_readtest.ko \
+	device/huawei/u8150/prebuilt/lib/modules/mtd_stresstest.ko:system/lib/modules/mtd_stresstest.ko \
+	device/huawei/u8150/prebuilt/lib/modules/mtd_torturetest.ko:system/lib/modules/mtd_torturetest.ko \
+	device/huawei/u8150/prebuilt/lib/modules/pmem_kernel_test.ko:system/lib/modules/pmem_kernel_test.ko \
+	device/huawei/u8150/prebuilt/lib/modules/zram.ko:system/lib/modules/zram.ko \
+	device/huawei/u8150/prebuilt/lib/modules/dma_test.ko:system/lib/modules/dma_test.ko \
+	device/huawei/u8150/prebuilt/lib/modules/msm_battery.ko:system/lib/modules/msm_battery.ko \
+	device/huawei/u8150/prebuilt/lib/modules/mtd_pagetest.ko:system/lib/modules/mtd_pagetest.ko \
+	device/huawei/u8150/prebuilt/lib/modules/mtd_speedtest.ko:system/lib/modules/mtd_speedtest.ko \
+	device/huawei/u8150/prebuilt/lib/modules/mtd_subpagetest.ko:system/lib/modules/mtd_subpagetest.ko \
+	device/huawei/u8150/prebuilt/lib/modules/oprofile.ko:system/lib/modules/oprofile.ko \
+	device/huawei/u8150/prebuilt/lib/modules/reset_modem.ko:system/lib/modules/reset_modem.ko \

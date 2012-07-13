@@ -1,8 +1,11 @@
 LOCAL_PATH := $(my-dir)
 
-#ifeq ($(TARGET_DEVICE),u8150)
+ifeq ($(TARGET_DEVICE),u8150)
 
-#subdir_makefiles := \
+#LOCAL_C_INCLUDES := \
+	$(LOCAL_PATH)/include
+
+subdir_makefiles := \
     $(LOCAL_PATH)/libaudio/Android.mk \
     $(LOCAL_PATH)/libcamera/Android.mk \
     $(LOCAL_PATH)/libcopybit/Android.mk \
@@ -12,6 +15,6 @@ LOCAL_PATH := $(my-dir)
     $(LOCAL_PATH)/librpc/Android.mk \
     $(LOCAL_PATH)/libstagefrighthw/Android.mk
 
-    #include $(subdir_makefiles)
+    include $(subdir_makefiles)
 
-#endif
+endif
